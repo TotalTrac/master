@@ -1,10 +1,9 @@
 ﻿CREATE TABLE [dbo].[ActiveUsers] (
   [Id] [int] IDENTITY,
-  [ConnectionId] [varchar](200) NULL,
-  [Expiration] [datetime] NULL,
-  [UserId] [int] NOT NULL,
   [Created] [datetime] NULL,
   [CreatedById] [int] NULL,
+  [Expiration] [datetime] NULL,
+  [UserId] [int] NOT NULL,
   [RowVersion] [timestamp] NULL,
   CONSTRAINT [PK_ActiveUsers] PRIMARY KEY CLUSTERED ([Id])
 )

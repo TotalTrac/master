@@ -1,0 +1,13 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[JobPrioritiesGet]
+	
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT  
+		*
+	FROM JobPriorities;
+END
+GO

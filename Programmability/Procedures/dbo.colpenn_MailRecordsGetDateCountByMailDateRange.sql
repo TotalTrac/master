@@ -1,0 +1,22 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[colpenn_MailRecordsGetDateCountByMailDateRange] (
+  @From	datetime	= NULL
+  , @To		datetime	= NULL  
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT
+		MAILRECORD_MAILDATE AS [DATE]
+		, COUNT(*) AS [COUNT]
+	FROM 
+		[dbo].[colpenn_MailRecords] 
+	WHERE
+		(@From IS NULL OR MAILRECORD_MAILDATE >= @From)
+		AND (@To IS NULL OR MAILRECORD_MAILDATE <= @To)
+	GROUP BY
+		MAILRECORD_MAILDATE
+END
+GO

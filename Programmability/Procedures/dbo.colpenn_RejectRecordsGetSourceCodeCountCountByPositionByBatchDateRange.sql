@@ -1,0 +1,46 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[colpenn_RejectRecordsGetSourceCodeCountCountByPositionByBatchDateRange] (
+  @Effort		char(1)		= NULL
+  , @SourceCode1	bit	= NULL
+  , @SourceCode2	bit = NULL
+  , @SourceCode3	bit = NULL
+  , @SourceCode4	bit = NULL
+  , @SourceCode5	bit = NULL
+  , @SourceCode6	bit = NULL
+  , @SourceCode7	bit = NULL
+  , @SourceCode8	bit = NULL
+  , @SourceCode9	bit = NULL
+  , @SourceCode10	bit	= NULL
+  , @DateFrom		datetime = NULL
+  , @DateTo			datetime = NULL  
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT COUNT(*) FROM
+	(
+	SELECT				
+		COUNT(REJECTRECORD_SOURCECODE1) AS c
+	FROM 
+		[dbo].[colpenn_RejectRecords] 
+	WHERE		
+		(@DateFrom IS NULL OR REJECTRECORD_TRANSACTIONDATE >= @DateFrom)
+		AND (@DateTo IS NULL OR REJECTRECORD_TRANSACTIONDATE <= @DateTo)
+		AND (@Effort IS NULL OR @Effort = '' OR REJECTRECORD_EFFORT = @Effort)
+	GROUP BY
+		REJECTRECORD_EFFORT,
+		CASE @SourceCode1  WHEN 1 THEN REJECTRECORD_SOURCECODE1 END,
+		CASE @SourceCode2  WHEN 1 THEN REJECTRECORD_SOURCECODE2 END,
+		CASE @SourceCode3  WHEN 1 THEN REJECTRECORD_SOURCECODE3 END,
+		CASE @SourceCode4  WHEN 1 THEN REJECTRECORD_SOURCECODE4 END,
+		CASE @SourceCode5  WHEN 1 THEN REJECTRECORD_SOURCECODE5 END,
+		CASE @SourceCode6  WHEN 1 THEN REJECTRECORD_SOURCECODE6 END,
+		CASE @SourceCode7  WHEN 1 THEN REJECTRECORD_SOURCECODE7 END,
+		CASE @SourceCode8  WHEN 1 THEN REJECTRECORD_SOURCECODE8 END,
+		CASE @SourceCode9  WHEN 1 THEN REJECTRECORD_SOURCECODE9 END,
+		CASE @SourceCode10 WHEN 1 THEN REJECTRECORD_SOURCECODE10 END
+	) c;
+END
+GO

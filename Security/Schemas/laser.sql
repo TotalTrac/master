@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [laser] AUTHORIZATION [dbo]
+GO

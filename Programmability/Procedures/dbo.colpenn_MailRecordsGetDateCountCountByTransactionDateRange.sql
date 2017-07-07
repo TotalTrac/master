@@ -1,0 +1,21 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[colpenn_MailRecordsGetDateCountCountByTransactionDateRange] (
+  @From	datetime	= NULL
+  , @To		datetime	= NULL  
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT
+		Count(MAILRECORD_TRANSACTIONDATE)
+	FROM 
+		[dbo].[colpenn_MailRecords] 
+	WHERE
+		(@From IS NULL OR MAILRECORD_TRANSACTIONDATE >= @From)
+		AND (@To IS NULL OR MAILRECORD_TRANSACTIONDATE <= @To)
+	GROUP BY
+		MAILRECORD_TRANSACTIONDATE
+END
+GO

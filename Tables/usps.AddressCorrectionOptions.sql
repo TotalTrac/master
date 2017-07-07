@@ -1,0 +1,7 @@
+﻿CREATE TABLE [usps].[AddressCorrectionOptions] (
+  [ACSOPTION_ID] [int] IDENTITY (-2147483648, 1),
+  [ACSOPTION_DESCRIPTION] [varchar](50) NOT NULL,
+  CONSTRAINT [PK_AddressCorrectionOptions] PRIMARY KEY CLUSTERED ([ACSOPTION_ID])
+)
+ON [PRIMARY]
+GO

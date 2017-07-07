@@ -1,0 +1,9 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[JobProcessAssignmentGetByID]
+	@ID	int
+AS
+	SET NOCOUNT ON;
+	
+	SELECT * FROM tblJobProcessAssignments WHERE ASSIGNMENT_ID = @ID;
+GO

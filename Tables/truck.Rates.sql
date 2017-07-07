@@ -1,0 +1,13 @@
+﻿CREATE TABLE [truck].[Rates] (
+  [RATE_ID] [int] IDENTITY (-2147483648, 1),
+  [RATE_FACILITYID] [int] NOT NULL,
+  [RATE_COMPANYID] [int] NOT NULL,
+  [RATE_PRICE] [decimal](5, 2) NOT NULL,
+  CONSTRAINT [PK_Rates] PRIMARY KEY CLUSTERED ([RATE_ID])
+)
+ON [PRIMARY]
+GO
+
+ALTER TABLE [truck].[Rates]
+  ADD CONSTRAINT [FK_Rates_Rates] FOREIGN KEY ([RATE_ID]) REFERENCES [truck].[Rates] ([RATE_ID])
+GO

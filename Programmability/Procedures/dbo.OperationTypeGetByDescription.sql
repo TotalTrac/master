@@ -1,0 +1,17 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[OperationTypeGetByDescription] 
+	@Description nvarchar(50)
+AS
+BEGIN
+	SET NOCOUNT ON;
+    
+	SELECT 
+		OPERATIONTYPE_ID
+		, OPERATIONTYPE_DESCRIPTION
+	FROM 
+		[dbo].[OperationTypes]
+	WHERE
+		OPERATIONTYPE_DESCRIPTION = @Description
+END
+GO

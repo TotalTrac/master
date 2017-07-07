@@ -1,0 +1,21 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [web].[ButtonsGetByPageID]
+	@ID			int
+AS
+BEGIN
+	
+    SET NOCOUNT ON;
+    
+    SELECT 
+		l.BUTTON_ID				
+		, l.BUTTON_NAME
+		, l.BUTTON_PAGEID
+		, l.BUTTON_TITLE		
+		, l.BUTTON_ROWVERSION
+	FROM
+		[web].[Buttons] AS l		
+	WHERE
+		l.BUTTON_PAGEID = @ID
+END
+GO

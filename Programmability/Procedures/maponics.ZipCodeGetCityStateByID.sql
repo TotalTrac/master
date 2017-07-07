@@ -1,0 +1,18 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [maponics].[ZipCodeGetCityStateByID]
+	@ID	int
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	    
+	SELECT
+		ZIPCODE_CITY
+		, ZIPCODE_STATE		
+	FROM
+		[maponics].[ZipCodes]
+	WHERE
+		ZIPCODE_ID = @ID;
+END
+GO

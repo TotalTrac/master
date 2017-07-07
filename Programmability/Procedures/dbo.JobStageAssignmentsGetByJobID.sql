@@ -1,0 +1,13 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[JobStageAssignmentsGetByJobID]
+	@ID int
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+	SELECT * FROM tblJobStageAssignments WHERE ASSIGNMENT_JOBID = @ID;
+
+END
+GO

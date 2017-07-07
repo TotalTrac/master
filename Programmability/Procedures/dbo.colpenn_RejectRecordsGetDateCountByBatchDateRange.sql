@@ -1,0 +1,22 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[colpenn_RejectRecordsGetDateCountByBatchDateRange] (
+  @From	datetime	= NULL
+  , @To		datetime	= NULL  
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT
+		REJECTRECORD_BATCHDATE AS [DATE]
+		, COUNT(*) AS [COUNT]
+	FROM 
+		[dbo].[colpenn_RejectRecords] 
+	WHERE
+		(@From IS NULL OR REJECTRECORD_BATCHDATE >= @From)
+		AND (@To IS NULL OR REJECTRECORD_BATCHDATE <= @To)
+	GROUP BY
+		REJECTRECORD_BATCHDATE
+END
+GO

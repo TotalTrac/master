@@ -1,0 +1,17 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[ProcessTypeGetByDescription] 
+	@Description nvarchar(225)
+AS
+BEGIN
+	SET NOCOUNT ON;
+    
+	SELECT 
+		PROCESSTYPE_ID
+		, PROCESSTYPE_DESCRIPTION
+	FROM 
+		[dbo].[ProcessTypes]
+	WHERE
+		PROCESSTYPE_DESCRIPTION = @Description
+END
+GO

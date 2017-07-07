@@ -1,0 +1,20 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[TabTypeDeleteByName]
+	@Name NVarChar(50)
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	
+	DELETE 
+		[dbo].[TabTypes]
+	WHERE
+		TABTYPE_NAME = @Name;
+
+	IF @@ROWCOUNT > 0 
+		RETURN 0;
+	ELSE
+		RETURN 1;
+END
+GO

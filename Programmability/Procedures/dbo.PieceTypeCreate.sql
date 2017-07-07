@@ -1,0 +1,23 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+
+CREATE PROCEDURE [dbo].[PieceTypeCreate] 
+	@Name NVarChar(50)
+AS
+
+BEGIN
+
+	SET NOCOUNT ON;
+
+	INSERT PieceTypes
+	(
+		PIECETYPE_NAME
+	) 
+	OUTPUT		
+		inserted.PIECETYPE_ID AS ID, inserted.PIECETYPE_ROWVERSION AS [VERSION]
+	VALUES 
+	(
+		@Name
+	);
+END
+GO

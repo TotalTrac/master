@@ -1,0 +1,24 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[AssignmentCreate]
+	@JobID int,
+	@UserID int
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	
+	INSERT Assignments
+	(
+		ASSIGNMENT_JOBID,
+		ASSIGNMENT_USERID
+	)
+	OUTPUT
+		inserted.ASSIGNMENT_ID AS ID, inserted.ASSIGNMENT_ROWVERSION AS [VERSION]
+	VALUES
+	(
+		@JobID,
+		@UserID
+	);
+END
+GO

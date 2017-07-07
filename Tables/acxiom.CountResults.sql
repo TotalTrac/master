@@ -1,0 +1,19 @@
+﻿CREATE TABLE [acxiom].[CountResults] (
+  [COUNT_ID] [int] IDENTITY (-2147483648, 1),
+  [COUNT_COUNTID] [char](10) NOT NULL,
+  [COUNT_CREATED] [datetime] NULL,
+  [COUNT_CREATEDBYID] [int] NULL,
+  [COUNT_ORDERID] [int] NULL,
+  [COUNT_ROWVERSION] [timestamp],
+  CONSTRAINT [PK_CountResults] PRIMARY KEY CLUSTERED ([COUNT_ID])
+)
+ON [PRIMARY]
+GO
+
+ALTER TABLE [acxiom].[CountResults]
+  ADD CONSTRAINT [FK_CountResults_Orders] FOREIGN KEY ([COUNT_ORDERID]) REFERENCES [acxiom].[Orders] ([ORDER_ID]) ON DELETE CASCADE
+GO
+
+ALTER TABLE [acxiom].[CountResults]
+  ADD CONSTRAINT [FK_CountResults_Users] FOREIGN KEY ([COUNT_CREATEDBYID]) REFERENCES [dbo].[Users] ([USER_USERID])
+GO

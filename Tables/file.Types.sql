@@ -1,0 +1,8 @@
+﻿CREATE TABLE [file].[Types] (
+  [TYPE_ID] [int] IDENTITY,
+  [TYPE_NAME] [nvarchar](50) NOT NULL,
+  [TYPE_ROWVERSION] [timestamp],
+  CONSTRAINT [PK_FileAssetTypes] PRIMARY KEY CLUSTERED ([TYPE_ID]) WITH (FILLFACTOR = 90)
+)
+ON [PRIMARY]
+GO

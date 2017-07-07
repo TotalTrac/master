@@ -1,0 +1,20 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+
+CREATE PROCEDURE [dbo].[ClientsGetCountByUserID]
+	@ID		int
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	
+	SELECT 
+		COUNT(c.CLIENT_ID) 
+	FROM 
+		[dbo].[Clients] AS c
+		INNER JOIN [dbo].[Relationships] AS r
+			ON c.CLIENT_ID = r.RELATIONSHIP_CLIENTID
+	WHERE
+		r.RELATIONSHIP_USERID = @ID;
+END
+GO

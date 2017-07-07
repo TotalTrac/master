@@ -1,0 +1,6 @@
+﻿CREATE TABLE [acxiom].[_FileNames] (
+  [FILE_NAME] [char](6) NOT NULL,
+  CONSTRAINT [PK__FileNames] PRIMARY KEY CLUSTERED ([FILE_NAME])
+)
+ON [PRIMARY]
+GO

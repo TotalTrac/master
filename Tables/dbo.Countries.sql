@@ -1,0 +1,14 @@
+﻿CREATE TABLE [dbo].[Countries] (
+  [COUNTRY_ID] [int] NOT NULL,
+  [COUNTRY_CODE2] [char](2) NOT NULL,
+  [COUNTRY_CODE3] [char](3) NOT NULL,
+  [COUNTRY_NAME] [varchar](50) NOT NULL,
+  CONSTRAINT [PK_Countries] PRIMARY KEY CLUSTERED ([COUNTRY_ID]) WITH (FILLFACTOR = 90)
+)
+ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [IX_Countries_CountryCode]
+  ON [dbo].[Countries] ([COUNTRY_CODE2])
+  ON [PRIMARY]
+GO

@@ -1,0 +1,21 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[colpenn_RejectRecordsGetDateCountCountByTransactionDateRange] (
+  @From	datetime	= NULL
+  , @To		datetime	= NULL  
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT
+		Count(REJECTRECORD_TRANSACTIONDATE)
+	FROM 
+		[dbo].[colpenn_RejectRecords] 
+	WHERE
+		(@From IS NULL OR REJECTRECORD_TRANSACTIONDATE >= @From)
+		AND (@To IS NULL OR REJECTRECORD_TRANSACTIONDATE <= @To)
+	GROUP BY
+		REJECTRECORD_TRANSACTIONDATE
+END
+GO

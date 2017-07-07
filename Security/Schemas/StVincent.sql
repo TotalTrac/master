@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [StVincent] AUTHORIZATION [dbo]
+GO

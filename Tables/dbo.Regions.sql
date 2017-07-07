@@ -1,0 +1,22 @@
+﻿CREATE TABLE [dbo].[Regions] (
+  [REGION_ID] [int] IDENTITY,
+  [REGION_CODE] [nvarchar](3) NULL,
+  [REGION_COUNTRYID] [int] NOT NULL,
+  [REGION_NAME] [nvarchar](50) NOT NULL,
+  CONSTRAINT [PK_Regions] PRIMARY KEY CLUSTERED ([REGION_ID])
+)
+ON [PRIMARY]
+GO
+
+CREATE INDEX [IX_Regions_CountryID]
+  ON [dbo].[Regions] ([REGION_COUNTRYID])
+  ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Regions] WITH NOCHECK
+  ADD CONSTRAINT [FK_Regions_Countries] FOREIGN KEY ([REGION_COUNTRYID]) REFERENCES [dbo].[Countries] ([COUNTRY_ID]) ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[Regions]
+  NOCHECK CONSTRAINT [FK_Regions_Countries]
+GO

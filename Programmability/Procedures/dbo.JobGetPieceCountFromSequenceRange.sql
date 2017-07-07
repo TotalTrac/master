@@ -1,0 +1,26 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[JobGetPieceCountFromSequenceRange]
+	@ID	int
+AS
+BEGIN
+	SET NOCOUNT ON;
+	    
+	; WITH CTE AS
+	(
+		SELECT TOP 1
+			(seq.SEQUENCE_ENDVALUE - seq.SEQUENCE_STARTVALUE) + 1 AS [COUNT]
+		FROM
+			[mail].[MailSegmentSequences] AS seq
+			INNER JOIN [dbo].[MailSegments] As s
+				ON seq.SEQUENCE_SEGMENTID = s.MAILSEGMENT_ID
+		WHERE
+			s.MAILSEGMENT_JOBID = @ID
+		ORDER BY seq.SEQUENCE_ID DESC
+	)
+	SELECT
+		COALESCE(SUM(CTE.COUNT), 0)
+	FROM
+		CTE;
+END
+GO

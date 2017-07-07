@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [postal] AUTHORIZATION [dbo]
+GO

@@ -1,0 +1,12 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[JobProcessAssignmentDeleteByID]
+	@ID	int
+AS
+	DELETE tblJobProcessAssignments WHERE ASSIGNMENT_ID = @ID;
+	
+	IF @@ROWCOUNT > 0
+		RETURN 0;
+	ELSE
+		RETURN 1;
+GO

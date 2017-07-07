@@ -1,0 +1,15 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[CustomPagesGetCountByClientID] 
+	@ID int
+AS
+BEGIN
+	
+    SELECT 
+		COUNT(CUSTOMPAGE_ID)
+	FROM 
+		[dbo].[CustomPages]
+	WHERE
+		(CUSTOMPAGE_CLIENTID = @ID);
+END
+GO

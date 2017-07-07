@@ -1,0 +1,13 @@
+﻿CREATE TABLE [file].[ContentTypes] (
+  [CONTENTTYPE_ID] [int] IDENTITY,
+  [CONTENTTYPE_EXTENSION] [nvarchar](10) NULL,
+  [CONTENTTYPE_MIMETYPE] [nvarchar](100) NOT NULL,
+  CONSTRAINT [PK_ContentTypes] PRIMARY KEY CLUSTERED ([CONTENTTYPE_ID])
+)
+ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [IX_FileAssetContentTypes_Extension]
+  ON [file].[ContentTypes] ([CONTENTTYPE_EXTENSION])
+  ON [PRIMARY]
+GO

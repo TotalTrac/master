@@ -1,0 +1,8 @@
+﻿CREATE TABLE [file].[FolderTypes] (
+  [TYPE_ID] [int] NOT NULL,
+  [TYPE_NAME] [nvarchar](max) NOT NULL,
+  CONSTRAINT [PK_FolderTypes] PRIMARY KEY CLUSTERED ([TYPE_ID])
+)
+ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO

@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [acxiom] AUTHORIZATION [dbo]
+GO

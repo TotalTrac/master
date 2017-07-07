@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [site] AUTHORIZATION [dbo]
+GO

@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [ip] AUTHORIZATION [dbo]
+GO

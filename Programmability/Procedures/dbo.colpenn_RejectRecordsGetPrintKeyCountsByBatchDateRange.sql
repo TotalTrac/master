@@ -1,0 +1,23 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[colpenn_RejectRecordsGetPrintKeyCountsByBatchDateRange] (
+  @DateFrom	datetime	= NULL
+  , @DateTo		datetime	= NULL  
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT
+		REJECTRECORD_PRINTKEY AS PRINTKEY
+		, NULL AS PRINTKEY_EFFORT
+		, COUNT(*) AS PRINTKEY_COUNT
+	FROM 
+		[dbo].[colpenn_RejectRecords] 
+	WHERE
+		(@DateFrom IS NULL OR REJECTRECORD_BATCHDATE >= @DateFrom)
+		AND (@DateTo IS NULL OR REJECTRECORD_BATCHDATE <= @DateTo)
+	GROUP BY
+		REJECTRECORD_PRINTKEY
+END
+GO

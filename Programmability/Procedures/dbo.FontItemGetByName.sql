@@ -1,0 +1,19 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[FontItemGetByName] 
+	@Name NVarChar(75)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT 
+		FONT_ID
+		, FONT_NAME
+		, FONT_ROWVERSION
+	FROM
+		[dbo].[Fonts] 
+	WHERE 
+		FONT_NAME = @Name;
+END
+GO

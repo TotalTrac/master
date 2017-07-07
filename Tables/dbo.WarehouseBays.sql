@@ -1,0 +1,20 @@
+﻿CREATE TABLE [dbo].[WarehouseBays] (
+  [BAY_ID] [int] IDENTITY,
+  [BAY_DESCRIPTION] [nvarchar](50) NOT NULL CONSTRAINT [DF_tblWarehouseBays_WAREHOUSEBAY_DESCRIPTION] DEFAULT (''),
+  [BAY_NUMBER] [int] NOT NULL,
+  [BAY_SECTIONID] [int] NOT NULL CONSTRAINT [DF_tblWarehouseBays_WAREHOUSEBAY_SECTIONID] DEFAULT (0),
+  [BAY_ROWVERSION] [timestamp],
+  CONSTRAINT [PK_WarehouseBays] PRIMARY KEY CLUSTERED ([BAY_ID]) WITH (FILLFACTOR = 90)
+)
+ON [PRIMARY]
+GO
+
+CREATE INDEX [IX_WarehouseBays_SectionID]
+  ON [dbo].[WarehouseBays] ([BAY_SECTIONID])
+  WITH (FILLFACTOR = 90)
+  ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[WarehouseBays]
+  ADD CONSTRAINT [FK_WarehouseBays_WarehouseSections] FOREIGN KEY ([BAY_SECTIONID]) REFERENCES [dbo].[WarehouseSections] ([SECTION_ID]) ON DELETE CASCADE
+GO

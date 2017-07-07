@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[NDCs] (
+  [NDC_ID] [int] IDENTITY,
+  [NDC_LATITUDE] [decimal](9, 6) NOT NULL,
+  [NDC_LONGITUDE] [decimal](9, 6) NOT NULL,
+  [NDC_NAME] [nvarchar](30) NOT NULL,
+  [NDC_STATE] [char](2) NOT NULL,
+  [NDC_ZIPCODE] [char](5) NOT NULL,
+  CONSTRAINT [PK_NDCs] PRIMARY KEY CLUSTERED ([NDC_ID])
+)
+ON [PRIMARY]
+GO

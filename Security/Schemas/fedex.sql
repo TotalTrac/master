@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [fedex] AUTHORIZATION [dbo]
+GO

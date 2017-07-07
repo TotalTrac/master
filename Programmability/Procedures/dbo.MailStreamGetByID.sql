@@ -1,0 +1,17 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+
+CREATE PROCEDURE [dbo].[MailStreamGetByID] 
+	@ID int
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT 
+		* 
+	FROM 
+		MailStreams 
+	WHERE 
+		MAILSTREAM_ID = @ID;
+END
+GO

@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [maponics] AUTHORIZATION [dbo]
+GO

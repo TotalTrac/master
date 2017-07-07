@@ -1,0 +1,19 @@
+﻿CREATE TABLE [dbo].[WarehouseShelves] (
+  [SHELF_ID] [int] IDENTITY,
+  [SHELF_BAYID] [int] NOT NULL CONSTRAINT [DF_tblWarehouseShelves_WAREHOUSESHELF_BAYID] DEFAULT (0),
+  [SHELF_VERTICALPOS] [int] NOT NULL CONSTRAINT [DF_tblWarehouseShelves_WAREHOUSESHELF_VERTICALPOS] DEFAULT (0),
+  [SHELF_ROWVERSION] [timestamp],
+  CONSTRAINT [PK_WarehouseShelves] PRIMARY KEY CLUSTERED ([SHELF_ID]) WITH (FILLFACTOR = 90)
+)
+ON [PRIMARY]
+GO
+
+CREATE INDEX [IX_WarehouseShelves_BayID]
+  ON [dbo].[WarehouseShelves] ([SHELF_BAYID])
+  WITH (FILLFACTOR = 90)
+  ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[WarehouseShelves]
+  ADD CONSTRAINT [FK_WarehouseShelves_WarehouseBays] FOREIGN KEY ([SHELF_BAYID]) REFERENCES [dbo].[WarehouseBays] ([BAY_ID]) ON DELETE CASCADE
+GO

@@ -1,0 +1,12 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[CustomPagesGetCount] 	
+AS
+BEGIN
+	
+    SELECT 
+		COUNT(CUSTOMPAGE_ID) 
+	FROM 
+		[dbo].[CustomPages];
+END
+GO

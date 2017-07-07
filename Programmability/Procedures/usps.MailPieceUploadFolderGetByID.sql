@@ -1,0 +1,18 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [usps].[MailPieceUploadFolderGetByID]
+	@ID		int
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT
+		FOLDER_ID
+		, FOLDER_PATH
+		, FOLDER_ROWVERSION
+	FROM
+		[usps].[MailPieceUploadFolders]
+	WHERE
+		FOLDER_ID = @ID;
+END
+GO

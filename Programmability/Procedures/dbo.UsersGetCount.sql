@@ -1,0 +1,16 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+
+CREATE PROCEDURE [dbo].[UsersGetCount]
+	
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	
+	SELECT 
+		COUNT(USER_USERID) 
+	FROM 
+		[dbo].[Users];
+END
+GO

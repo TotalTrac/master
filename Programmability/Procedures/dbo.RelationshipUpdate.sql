@@ -1,0 +1,23 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[RelationshipUpdate] 
+	@ID int,
+	@ClientID int,
+	@UserID int,
+	@Version timestamp
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+		
+	UPDATE Relationships
+	SET
+		RELATIONSHIP_CLIENTID = @ClientID,
+		RELATIONSHIP_USERID = @UserID
+	OUTPUT		
+		inserted.RELATIONSHIP_ID AS ID, inserted.RELATIONSHIP_ROWVERSION AS [VERSION]
+	WHERE
+		(RELATIONSHIP_ID = @ID) AND
+		(RELATIONSHIP_ROWVERSION = @Version);
+END
+GO

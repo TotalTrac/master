@@ -1,0 +1,29 @@
+﻿CREATE TABLE [dbo].[ProjectUsers] (
+  [PROJECTUSER_PROJECTID] [int] NOT NULL,
+  [PROJECTUSER_USERID] [int] NOT NULL
+)
+ON [PRIMARY]
+GO
+
+CREATE INDEX [IX_ProjectUsers_ProjectID]
+  ON [dbo].[ProjectUsers] ([PROJECTUSER_PROJECTID])
+  ON [PRIMARY]
+GO
+
+CREATE INDEX [IX_ProjectUsers_Uniqueness]
+  ON [dbo].[ProjectUsers] ([PROJECTUSER_PROJECTID], [PROJECTUSER_USERID])
+  ON [PRIMARY]
+GO
+
+CREATE INDEX [IX_ProjectUsers_UserID]
+  ON [dbo].[ProjectUsers] ([PROJECTUSER_USERID])
+  ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[ProjectUsers]
+  ADD CONSTRAINT [FK_ProjectUsers_Projects] FOREIGN KEY ([PROJECTUSER_PROJECTID]) REFERENCES [dbo].[Projects] ([PROJECT_ID]) ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ProjectUsers]
+  ADD CONSTRAINT [FK_ProjectUsers_tblUsers] FOREIGN KEY ([PROJECTUSER_USERID]) REFERENCES [dbo].[Users] ([USER_USERID]) ON DELETE CASCADE
+GO

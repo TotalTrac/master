@@ -1,0 +1,15 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [dbo].[JobsGetCount]
+	
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	
+	SELECT 
+		COUNT(JOB_ID) 
+	FROM
+		[dbo].[Jobs];
+END
+GO

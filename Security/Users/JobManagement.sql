@@ -1,0 +1,3 @@
+﻿CREATE USER [JobManagement]
+  WITHOUT LOGIN
+GO

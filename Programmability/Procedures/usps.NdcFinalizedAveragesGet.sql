@@ -1,0 +1,52 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [usps].[NdcFinalizedAveragesGet]
+	@EntryPoint			char(5)
+	, @From				date
+	, @To				date
+	, @GroupBy			int
+	, @PostalClassID	int = NULL
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	-- @GroupBy
+	-- 0 = Day
+	-- 1 = Month
+	-- 2 = Year
+	
+	SELECT
+		NDC_ID AS [ID]
+		, NDC_ENTRYPOINT AS [ENTRYPOINT]
+		, NDC_POSTALCLASSID AS [POSTALCLASSID]
+		, CONVERT(bigint, SUM(NDC_PIECES)) AS [PIECES]
+		, CASE @GroupBy
+			WHEN 0 THEN
+				CONVERT(nvarchar, CONVERT(DATE, NDC_SCANDATE))
+			WHEN 1 THEN
+				CONVERT(nvarchar, DATEPART(YEAR, NDC_SCANDATE)) + '-' + REPLACE(STR(CONVERT(nvarchar,DATEPART(MONTH, NDC_SCANDATE)), 2), SPACE(1), '0') 
+			WHEN 2 THEN
+				CONVERT(nvarchar, DATEPART(YEAR, NDC_SCANDATE))
+		  END AS [DATE]		
+		, CONVERT(bigint, (SUM(NDC_PIECES * NDC_AVERAGEHOURS) / SUM (NDC_PIECES))) AS [AVERAGEHOURS]
+	FROM
+		[usps].[NdcFinalizedAverages]
+	WHERE
+		NDC_ENTRYPOINT = @EntryPoint
+		AND NDC_SCANDATE BETWEEN @From AND @To
+		AND (@PostalClassID IS NULL OR @PostalClassID = NDC_POSTALCLASSID)
+	GROUP BY
+		NDC_ID
+		, NDC_ENTRYPOINT
+		,  CASE @GroupBy
+			WHEN 0 THEN
+				CONVERT(nvarchar, CONVERT(DATE, NDC_SCANDATE))
+			WHEN 1 THEN
+				CONVERT(nvarchar, DATEPART(YEAR, NDC_SCANDATE)) + '-' + REPLACE(STR(CONVERT(nvarchar,DATEPART(MONTH, NDC_SCANDATE)), 2), SPACE(1), '0') 
+			WHEN 2 THEN
+				CONVERT(nvarchar, DATEPART(YEAR, NDC_SCANDATE))
+		  END
+		, NDC_POSTALCLASSID
+	
+END
+GO

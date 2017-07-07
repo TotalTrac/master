@@ -1,0 +1,7 @@
+﻿CREATE TABLE [site].[Sites] (
+  [SITE_ID] [int] IDENTITY (-2147483648, 1),
+  [SITE_NAME] [varchar](100) NOT NULL,
+  CONSTRAINT [PK_Sites] PRIMARY KEY CLUSTERED ([SITE_ID])
+)
+ON [PRIMARY]
+GO

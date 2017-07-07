@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Areas] (
+  [AREA_ID] [int] IDENTITY,
+  [AREA_CODE] [char](2) NOT NULL,
+  [AREA_NAME] [nvarchar](50) NOT NULL,
+  CONSTRAINT [PK_Areas] PRIMARY KEY CLUSTERED ([AREA_ID])
+)
+ON [PRIMARY]
+GO

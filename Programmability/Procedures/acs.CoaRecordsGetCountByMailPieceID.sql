@@ -1,0 +1,17 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [acs].[CoaRecordsGetCountByMailPieceID]
+	@ID	int
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	    
+	SELECT
+		COUNT([RECORD_ID])
+	FROM
+		[acs].[CoaRecords]		
+	WHERE
+		RECORD_MAILPIECEID = @ID;
+END
+GO

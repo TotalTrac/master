@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[_CampaignTargets] (
+  [TARGET_ID] [int] IDENTITY (-2147483648, 1),
+  [TARGET_CAMPAIGNID] [int] NOT NULL,
+  [TARGET_KEYVALUE] [nvarchar](38) NOT NULL,
+  CONSTRAINT [PK_CampaignTargets] PRIMARY KEY CLUSTERED ([TARGET_ID])
+)
+ON [PRIMARY]
+GO

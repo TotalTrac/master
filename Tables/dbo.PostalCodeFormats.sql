@@ -1,0 +1,14 @@
+﻿CREATE TABLE [dbo].[PostalCodeFormats] (
+  [FORMAT_ID] [int] IDENTITY (-2147483648, 1),
+  [FORMAT_COUNTRYID] [int] NOT NULL,
+  [FORMAT_PATTERN] [varchar](max) NOT NULL,
+  [FORMAT_FORMATSTRING] [varchar](max) NULL,
+  CONSTRAINT [PK_CountryPostalCodeFormats] PRIMARY KEY CLUSTERED ([FORMAT_ID])
+)
+ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[PostalCodeFormats]
+  ADD CONSTRAINT [FK_CountryPostalCodeFormats_Countries] FOREIGN KEY ([FORMAT_COUNTRYID]) REFERENCES [dbo].[Countries] ([COUNTRY_ID]) ON DELETE CASCADE
+GO

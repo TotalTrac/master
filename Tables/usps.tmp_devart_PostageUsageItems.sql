@@ -1,0 +1,13 @@
+﻿CREATE TABLE [usps].[tmp_devart_PostageUsageItems] (
+  [USAGEITEM_ID] [int] IDENTITY (-2147483648, 1),
+  [USAGEITEM_ACTUAL] [decimal](11, 2) NOT NULL,
+  [USAGEITEM_BILLED] [decimal](11, 2) NOT NULL,
+  [USAGEITEM_CREATED] [datetime] NOT NULL,
+  [USAGEITEM_CREATEDBYID] [int] NOT NULL,
+  [USAGEITEM_DATE] [date] NOT NULL,
+  [USAGEITEM_NOTES] [nvarchar](1000) NULL,
+  [USAGEITEM_ROWVERSION] [timestamp],
+  CONSTRAINT [tmp_devart_PK_PostageUsageItems] PRIMARY KEY CLUSTERED ([USAGEITEM_ID])
+)
+ON [PRIMARY]
+GO

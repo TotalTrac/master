@@ -1,0 +1,21 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+CREATE PROCEDURE [mail].[EventListenerUpdate]
+	@ID			int	
+	, @Events	int
+	, @UserID	int
+	, @Version  timestamp
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    UPDATE [mail].[EventListeners]
+	SET		
+		EVENTLISTENER_EVENTS	= @Events
+		, EVENTLISTENER_USERID	= @UserID
+	OUTPUT inserted.EVENTLISTENER_ID AS [ID], inserted.EVENTLISTENER_ROWVERSION AS [VERSION]
+	WHERE
+		EVENTLISTENER_ID = @ID
+		AND EVENTLISTENER_ROWVERSION = @Version
+END
+GO

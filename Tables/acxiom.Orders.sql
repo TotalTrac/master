@@ -1,0 +1,35 @@
+﻿CREATE TABLE [acxiom].[Orders] (
+  [ORDER_ID] [int] IDENTITY (-2147483648, 1),
+  [ORDER_AVAILABLE] [int] NOT NULL,
+  [ORDER_CREATED] [datetime] NOT NULL,
+  [ORDER_CREATEDBYID] [int] NOT NULL,
+  [ORDER_DESIRED] [int] NOT NULL,
+  [ORDER_ERRORMESSAGE] [nvarchar](500) NULL,
+  [ORDER_FILEFORMAT] [int] NOT NULL,
+  [ORDER_JOBID] [int] NOT NULL,
+  [ORDER_NAME] [nvarchar](100) NOT NULL,
+  [ORDER_ORDERID] [char](20) NOT NULL,
+  [ORDER_RETURNCODE] [int] NULL,
+  [ORDER_STATUS] [int] NULL,
+  [ORDER_URL] [nvarchar](500) NULL,
+  [ORDER_USAGE] [int] NOT NULL,
+  [ORDER_ROWVERSION] [timestamp],
+  CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED ([ORDER_ID])
+)
+ON [PRIMARY]
+GO
+
+CREATE INDEX [IX_Orders_CreatedByID]
+  ON [acxiom].[Orders] ([ORDER_CREATEDBYID])
+  ON [PRIMARY]
+GO
+
+CREATE INDEX [IX_Orders_JobID]
+  ON [acxiom].[Orders] ([ORDER_JOBID])
+  ON [PRIMARY]
+GO
+
+CREATE INDEX [IX_Orders_ORDER_ORDERID]
+  ON [acxiom].[Orders] ([ORDER_ORDERID])
+  ON [PRIMARY]
+GO

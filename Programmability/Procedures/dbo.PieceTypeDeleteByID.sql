@@ -1,0 +1,21 @@
+﻿SET QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+
+CREATE PROCEDURE [dbo].[PieceTypeDeleteByID]
+	@ID int
+AS
+
+BEGIN
+	
+	DELETE 
+		PieceTypes
+	WHERE
+		PIECETYPE_ID = @ID
+
+	IF @@ROWCOUNT > 0 
+		RETURN 0
+	ELSE
+		RETURN 1
+	
+END
+GO

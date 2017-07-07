@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Districts] (
+  [DISTRICT_ID] [int] IDENTITY,
+  [DISTRICT_CODE] [char](3) NOT NULL,
+  [DISTRICT_NAME] [nvarchar](50) NOT NULL,
+  CONSTRAINT [PK_Districts] PRIMARY KEY CLUSTERED ([DISTRICT_ID])
+)
+ON [PRIMARY]
+GO

@@ -1,0 +1,10 @@
+﻿CREATE TABLE [usps].[StatesTerritories] (
+  [STATE_ID] [int] IDENTITY,
+  [STATE_ABBREVIATION] [char](2) NOT NULL,
+  [STATE_ISCONTINENTAL] [bit] NOT NULL,
+  [STATE_ISSTATE] [bit] NOT NULL,
+  [STATE_NAME] [varchar](50) NOT NULL,
+  CONSTRAINT [PK_StatesTerritories] PRIMARY KEY CLUSTERED ([STATE_ID])
+)
+ON [PRIMARY]
+GO

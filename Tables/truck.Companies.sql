@@ -1,0 +1,7 @@
+﻿CREATE TABLE [truck].[Companies] (
+  [COMPANY_ID] [int] IDENTITY (-2147483648, 1),
+  [COMPANY_NAME] [nvarchar](100) NOT NULL,
+  CONSTRAINT [PK_Companies] PRIMARY KEY CLUSTERED ([COMPANY_ID])
+)
+ON [PRIMARY]
+GO

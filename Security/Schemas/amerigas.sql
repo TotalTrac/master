@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [amerigas] AUTHORIZATION [dbo]
+GO

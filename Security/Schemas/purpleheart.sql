@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [purpleheart] AUTHORIZATION [dbo]
+GO
